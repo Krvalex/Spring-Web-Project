@@ -15,6 +15,7 @@ import java.security.Principal;
 @Controller
 @RequiredArgsConstructor
 public class UserController {
+
     private final UserService userService;
 
     @GetMapping("/login")
@@ -29,7 +30,7 @@ public class UserController {
 
 
     @PostMapping("/registration")
-    public String createUser(User user, Model model) {
+    public String create(User user, Model model) {
         if (!userService.createUser(user)) {
             model.addAttribute("errorMessage", "Пользователь с email: " + user.getEmail() + " уже существует");
             return "registration";
@@ -38,7 +39,7 @@ public class UserController {
     }
 
     @GetMapping("/user/{user}")
-    public String userInfo(@PathVariable("user") User user, Model model) {
+    public String getByUser(@PathVariable("user") User user, Model model) {
         model.addAttribute("user", user);
         model.addAttribute("products", user.getProducts());
         model.addAttribute("userChannel", user);
@@ -46,7 +47,7 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public String profile(Principal principal,
+    public String getProfile(Principal principal,
                           Model model) {
         User user = userService.getUserByPrincipal(principal);
         model.addAttribute("user", user);
@@ -79,7 +80,7 @@ public class UserController {
     }
 
     @GetMapping("{type}/{user}/list")
-    public String userList(
+    public String getUserSubs(
             Model model,
             @PathVariable User user,
             @PathVariable String type

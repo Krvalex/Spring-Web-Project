@@ -2,6 +2,7 @@ package net.spring.store.services;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.spring.store.exception.impl.ProductNotFoundException;
 import net.spring.store.models.Image;
 import net.spring.store.models.Product;
 import net.spring.store.repositories.ProductRepository;
@@ -63,6 +64,7 @@ public class ProductService {
     }
 
     public Product getProductById(Long id) {
-        return productRepository.findById(id).orElse(null);
+        return productRepository.findById(id)
+                .orElseThrow(() -> new ProductNotFoundException("Product with this id - %s not found".formatted(id)));
     }
 }

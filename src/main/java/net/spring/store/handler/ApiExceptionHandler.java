@@ -6,7 +6,6 @@ import net.spring.store.exception.impl.ProductNotFoundException;
 import net.spring.store.exception.impl.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -17,7 +16,7 @@ import java.util.Date;
 public class ApiExceptionHandler {
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ExceptionHandler(ImageNotFoundException.class)
     public ErrorMessage handleImageNotFoundException(ImageNotFoundException ex) {
         return new ErrorMessage(
                 HttpStatus.NOT_FOUND.value(),
@@ -27,7 +26,7 @@ public class ApiExceptionHandler {
     }
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ExceptionHandler(ProductNotFoundException.class)
     public ErrorMessage handleProductNotFoundException(ProductNotFoundException ex) {
         return new ErrorMessage(
                 HttpStatus.NOT_FOUND.value(),
@@ -37,7 +36,7 @@ public class ApiExceptionHandler {
     }
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ExceptionHandler(UserNotFoundException.class)
     public ErrorMessage handleUserNotFoundException(UserNotFoundException ex) {
         return new ErrorMessage(
                 HttpStatus.NOT_FOUND.value(),
@@ -47,7 +46,7 @@ public class ApiExceptionHandler {
     }
 
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ExceptionHandler(UsernameNotFoundException.class)
     public ErrorMessage handleUsernameNotFoundException(UsernameNotFoundException ex) {
         return new ErrorMessage(
                 HttpStatus.NOT_FOUND.value(),

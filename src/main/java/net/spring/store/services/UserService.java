@@ -2,9 +2,11 @@ package net.spring.store.services;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.spring.store.exception.impl.UserNotFoundException;
 import net.spring.store.models.User;
 import net.spring.store.models.enums.Role;
 import net.spring.store.repositories.UserRepository;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +26,7 @@ public class UserService {
 
     public boolean createUser(User user) {
         String email = user.getEmail();
-        if (userRepository.findByEmail(email) != null) return false;
+        if (userRepository.findByEmail(email).isPresent()) return false;
         user.setActive(true);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.getRoles().add(Role.ROLE_ADMIN);
@@ -38,15 +40,14 @@ public class UserService {
     }
 
     public void ban(Long id) {
-        User user = userRepository.findById(id).orElse(null);
-        if (user != null) {
-            if (user.isActive()) {
-                user.setActive(false);
-                log.info("Ban user with id = {}; email: {}", user.getId(), user.getEmail());
-            } else {
-                user.setActive(true);
-                log.info("Unban user with id = {}; email: {}", user.getId(), user.getEmail());
-            }
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("User with this email - %s not found".formatted(id)));
+        if (user.isActive()) {
+            user.setActive(false);
+            log.info("Ban user with id = {}; email: {}", user.getId(), user.getEmail());
+        } else {
+            user.setActive(true);
+            log.info("Unban user with id = {}; email: {}", user.getId(), user.getEmail());
         }
         userRepository.save(user);
     }
@@ -66,7 +67,8 @@ public class UserService {
 
     public User getUserByPrincipal(Principal principal) {
         if (principal == null) return new User();
-        return userRepository.findByEmail(principal.getName());
+        return userRepository.findByEmail(principal.getName())
+                .orElseThrow(() -> new UsernameNotFoundException("User with this email - %s not found".formatted(principal.getName())));
     }
 
     public void subscribe(User currentUser, User user) {

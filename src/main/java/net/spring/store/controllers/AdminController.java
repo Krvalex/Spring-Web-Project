@@ -18,22 +18,22 @@ import java.util.Map;
 @RequiredArgsConstructor
 @PreAuthorize("hasAuthority('ROLE_ADMIN')")
 public class AdminController {
+
     private final UserService userService;
 
     @GetMapping("/admin")
     public String admin(Model model) {
-        model.addAttribute("users", userService.list());
+        model.addAttribute("users", userService.getList());
         return "admin";
     }
-
     @PostMapping("/admin/user/ban/{id}")
-    public String userBan(@PathVariable("id") Long id) {
-        userService.banUser(id);
+    public String ban(@PathVariable("id") Long id) {
+        userService.ban(id);
         return "redirect:/admin";
     }
 
     @GetMapping("/admin/user/edit/{user}")
-    public String userEdit(@PathVariable("user") User user, Model model) {
+    public String edit(@PathVariable("user") User user, Model model) {
         model.addAttribute("user", user);
         model.addAttribute("roles", Role.values());
         return "user-edit";

@@ -33,11 +33,11 @@ public class UserService {
         return true;
     }
 
-    public List<User> list() {
+    public List<User> getList() {
         return userRepository.findAll();
     }
 
-    public void banUser(Long id) {
+    public void ban(Long id) {
         User user = userRepository.findById(id).orElse(null);
         if (user != null) {
             if (user.isActive()) {

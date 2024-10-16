@@ -1,9 +1,9 @@
-package com.example.spring_web_project.controllers;
+package net.spring.store.controllers;
 
-import com.example.spring_web_project.models.Product;
-import com.example.spring_web_project.models.User;
-import com.example.spring_web_project.services.ProductService;
 import lombok.RequiredArgsConstructor;
+import net.spring.store.models.Product;
+import net.spring.store.models.User;
+import net.spring.store.services.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

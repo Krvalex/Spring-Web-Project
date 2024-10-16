@@ -1,4 +1,4 @@
-package com.example.spring_web_project.models;
+package net.spring.store.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

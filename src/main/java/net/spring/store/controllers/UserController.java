@@ -1,8 +1,8 @@
-package com.example.spring_web_project.controllers;
+package net.spring.store.controllers;
 
-import com.example.spring_web_project.models.User;
-import com.example.spring_web_project.services.UserService;
 import lombok.RequiredArgsConstructor;
+import net.spring.store.models.User;
+import net.spring.store.services.UserService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

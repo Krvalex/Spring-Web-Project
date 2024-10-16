@@ -1,6 +1,6 @@
-package com.example.spring_web_project.repositories;
+package net.spring.store.repositories;
 
-import com.example.spring_web_project.models.Product;
+import net.spring.store.models.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

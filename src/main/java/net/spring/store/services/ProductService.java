@@ -1,12 +1,12 @@
-package com.example.spring_web_project.services;
+package net.spring.store.services;
 
-import com.example.spring_web_project.models.Image;
-import com.example.spring_web_project.models.Product;
-import com.example.spring_web_project.models.User;
-import com.example.spring_web_project.repositories.ProductRepository;
-import com.example.spring_web_project.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.spring.store.models.Image;
+import net.spring.store.models.Product;
+import net.spring.store.models.User;
+import net.spring.store.repositories.ProductRepository;
+import net.spring.store.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 

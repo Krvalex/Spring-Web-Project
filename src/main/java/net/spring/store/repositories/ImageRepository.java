@@ -1,6 +1,6 @@
-package com.example.spring_web_project.repositories;
+package net.spring.store.repositories;
 
-import com.example.spring_web_project.models.Image;
+import net.spring.store.models.Image;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ImageRepository extends JpaRepository<Image, Long> {

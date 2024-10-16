@@ -1,8 +1,8 @@
-package com.example.spring_web_project.controllers;
+package net.spring.store.controllers;
 
-import com.example.spring_web_project.models.Image;
-import com.example.spring_web_project.repositories.ImageRepository;
 import lombok.RequiredArgsConstructor;
+import net.spring.store.models.Image;
+import net.spring.store.repositories.ImageRepository;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

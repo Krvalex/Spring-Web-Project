@@ -1,10 +1,10 @@
-package com.example.spring_web_project.services;
+package net.spring.store.services;
 
-import com.example.spring_web_project.models.User;
-import com.example.spring_web_project.models.enums.Role;
-import com.example.spring_web_project.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.spring.store.models.User;
+import net.spring.store.models.enums.Role;
+import net.spring.store.repositories.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

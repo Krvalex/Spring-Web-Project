@@ -1,8 +1,8 @@
-package com.example.spring_web_project.models;
+package net.spring.store.models;
 
-import com.example.spring_web_project.models.enums.Role;
 import jakarta.persistence.*;
 import lombok.Data;
+import net.spring.store.models.enums.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

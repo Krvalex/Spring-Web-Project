@@ -1,7 +1,7 @@
-package com.example.spring_web_project.services;
+package net.spring.store.services;
 
-import com.example.spring_web_project.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
+import net.spring.store.repositories.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
